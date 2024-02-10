@@ -1,0 +1,8 @@
+[wsl2]
+localhostForwarding = true
+safeMode = false
+guiApplications = false
+nestedVirtualization = false
+networkingMode = mirrored
+firewall = false
+dnsTunneling = true
