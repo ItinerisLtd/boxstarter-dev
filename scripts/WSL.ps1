@@ -3,7 +3,7 @@ choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
 
 $DistroName = 'ubuntu'
 $DistroVersion = '2204'
-$Program = "$DistroName$DistroVersion"
+$Program = "$DistroName"
 (Get-Culture).TextInfo.ToTitleCase($Program.ToLower())
 $Username = 'itineris'
 $Password = 'itineris'
