@@ -1,8 +1,9 @@
 choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-$Program = "ubuntu"
 $Username = 'itineris'
 $Password = 'itineris'
 # TODO: Move this to choco install once --root is included in that package
@@ -10,18 +11,21 @@ Invoke-WebRequest -Uri "https://aka.ms/wslubuntu" -OutFile ~/Ubuntu.appx -UseBas
 Add-AppxPackage -Path ~/Ubuntu.appx
 
 RefreshEnv
+echo "Installing Ubuntu"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/.wslconfig" -OutFile ~/.wslconfig -UseBasicParsing
 
+wsl --update
+wsl --set-default-version 2
 # Install Ubuntu as passwordless root user
-& "$Program" install --root
+ubuntu install --root
 # Add user account
-& "$Program" run useradd -m "$Username"
-& "$Program" run sh -c "echo ${Username}:${Password} | chpasswd"
-& "$Program" run chsh -s /usr/bin/bash "$Username"
-& "$Program" run usermod -aG adm,cdrom,sudo,dip,plugdev
-& "$Program" run apt update
-& "$Program" run apt upgrade -y
-& "$Program" config --default-user "$Username"
-& "$Program" --set-default Ubuntu
+ubuntu run useradd -m "$Username"
+ubuntu run sh -c "echo ${Username}:${Password} | chpasswd"
+ubuntu run chsh -s /usr/bin/bash "$Username"
+ubuntu run usermod -aG adm,cdrom,sudo,dip,plugdev
+ubuntu run apt update
+ubuntu run apt upgrade -y
+ubuntu config --default-user "$Username"
+wsl --set-default Ubuntu
 
 # TODO: copy configs/wsl.conf to WSL /etc/wsl.conf
