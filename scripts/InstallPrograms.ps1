@@ -20,6 +20,7 @@ $extensions = @(
     "formulahendry.auto-close-tag",
     "formulahendry.auto-rename-tag",
     "kamikillerto.vscode-colorize",
+    "ms-vscode.PowerShell"
     "ms-vscode-remote.remote-wsl",
     "ms-edgedevtools.vscode-edge-devtools",
     "onecentlin.laravel-blade",
