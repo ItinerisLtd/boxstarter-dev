@@ -28,7 +28,7 @@ $extensions = @(
     "shufo.vscode-blade-formatter",
     "streetsidesoftware.code-spell-checker",
     "stylelint.vscode-stylelint",
-    "xabikos.javascriptsnippets",
+    "xabikos.javascriptsnippets"
 ) | SORT
 foreach ($extension in $extensions) {
   code --install-extension $extension
