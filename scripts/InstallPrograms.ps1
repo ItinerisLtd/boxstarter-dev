@@ -37,3 +37,4 @@ foreach ($extension in $extensions) {
 Start-BitsTransfer -Source "https://downloads.1password.com/win/1PasswordSetup-latest.exe" -Destination ~/Downloads/1PasswordSetup-latest.exe
 Invoke-Expression -Command "~/Downloads/1PasswordSetup-latest.exe"
 winget install -e --id Microsoft.Teams
+winget install --id Microsoft.Powershell --source winget
