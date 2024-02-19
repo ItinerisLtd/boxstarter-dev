@@ -4,6 +4,7 @@ choco install -y sysinternals
 choco install -y figma
 choco install -y microsoftwebdriver
 choco install -y powertoys
+choco install -y alacritty
 
 #--- Editor ---
 choco install -y vscode
