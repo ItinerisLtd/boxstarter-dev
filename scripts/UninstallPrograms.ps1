@@ -45,6 +45,7 @@ $applicationList = @(
     "Microsoft.YourPhone"
     "MicrosoftCorporationII.MicrosoftFamily"
     "Microsoft.Windows.ParentalControls"
+    "Clipchamp.Clipchamp"
     "*MarchofEmpires*"
     "*Minecraft*"
     "*Solitaire*"
