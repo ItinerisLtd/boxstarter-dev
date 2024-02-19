@@ -18,7 +18,7 @@ Copy-Item "../configs/.wslconfig" -Destination ~/.wslconfig
 & "$Program" install --root
 # Add user account
 & "$Program" run useradd -m "$Username"
-& "$Program" run sh -c "echo $Username:$Password | chpasswd"
+& "$Program" run sh -c "echo ${Username}:${Password} | chpasswd"
 & "$Program" run chsh -s /usr/bin/bash "$Username"
 & "$Program" run usermod -aG adm,cdrom,sudo,dip,plugdev
 & "$Program" run apt update
