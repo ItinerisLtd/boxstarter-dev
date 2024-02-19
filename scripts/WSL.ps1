@@ -2,14 +2,11 @@ choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
 
-$DistroName = 'ubuntu'
-$DistroVersion = '2204'
-$Program = "$DistroName"
-(Get-Culture).TextInfo.ToTitleCase($Program.ToLower())
+$Program = "ubuntu"
 $Username = 'itineris'
 $Password = 'itineris'
 # TODO: Move this to choco install once --root is included in that package
-Invoke-WebRequest -Uri "https://aka.ms/wsl$DistroName$DistroVersion" -OutFile ~/Ubuntu.appx -UseBasicParsing
+Invoke-WebRequest -Uri "https://aka.ms/wslubuntu" -OutFile ~/Ubuntu.appx -UseBasicParsing
 Add-AppxPackage -Path ~/Ubuntu.appx
 
 RefreshEnv
