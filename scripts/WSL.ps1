@@ -1,4 +1,5 @@
 choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
 
 $DistroName = 'ubuntu'
