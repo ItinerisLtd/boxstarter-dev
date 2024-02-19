@@ -21,7 +21,6 @@ $extensions = @(
     "formulahendry.auto-rename-tag",
     "kamikillerto.vscode-colorize",
     "ms-vscode-remote.remote-wsl"
-    "msjsdiag.debugger-for-edge"
     "onecentlin.laravel-blade",
     "porifa.laravel-intelephense",
     "sburg.vscode-javascript-booster",
