@@ -10,7 +10,7 @@ Invoke-WebRequest -Uri "https://aka.ms/wslubuntu" -OutFile ~/Ubuntu.appx -UseBas
 Add-AppxPackage -Path ~/Ubuntu.appx
 
 RefreshEnv
-Invoke-WebRequest -Uri "https://github.com/ItinerisLtd/boxstarter-dev/raw/main/configs/.wslconfig" -OutFile ~/.wslconfig -UseBasicParsing
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/.wslconfig" -OutFile ~/.wslconfig -UseBasicParsing
 
 # Install Ubuntu as passwordless root user
 & "$Program" install --root
