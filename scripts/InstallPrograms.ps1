@@ -3,6 +3,7 @@ choco install -y python
 choco install -y sysinternals
 choco install -y figma
 choco install -y microsoftwebdriver
+choco install -y powertoys
 
 #--- Editor ---
 choco install -y vscode
