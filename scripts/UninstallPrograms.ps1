@@ -47,6 +47,7 @@ $applicationList = @(
     "Microsoft.People*"
     "Microsoft.Microsoft3DViewer"
     "Microsoft.MixedReality.Portal*"
+    "MicrosoftCorporationII.MicrosoftFamily"
     "*Skype*"
     "*Autodesk*"
     "*BubbleWitch*"
