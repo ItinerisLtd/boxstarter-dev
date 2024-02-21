@@ -1,15 +1,16 @@
-choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
+#choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
+#choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
+#dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+#dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-echo 'Downloading Ubuntu'
+#echo 'Downloading Ubuntu'
 $Username = 'itineris'
 $Password = 'itineris'
 # TODO: Move this to choco install once --root is included in that package
-Invoke-WebRequest -Uri 'https://aka.ms/wslubuntu' -OutFile ~/Ubuntu.appx -UseBasicParsing
-Add-AppxPackage -Path ~/Ubuntu.appx
+#Invoke-WebRequest -Uri 'https://aka.ms/wslubuntu' -OutFile ~/Ubuntu.appx -UseBasicParsing
+#Add-AppxPackage -Path ~/Ubuntu.appx
 
 RefreshEnv
 echo 'Installing .wslconfig'
