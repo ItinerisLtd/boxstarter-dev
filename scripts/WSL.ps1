@@ -5,10 +5,11 @@ $AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Use
 $ACL.SetAccessRule($AccessRule)
 $ACL | Set-Acl -Path "C:\Windows\System32\drivers\etc\hosts"
 
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
-#choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
-#choco install -y Microsoft-Windows-Subsystem-Linux --source=windowsfeatures
+#Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+#Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
+choco install -y Microsoft-Hyper-V-All --source windowsFeatures
+choco install -y VirtualMachinePlatform --source windowsFeatures
+choco install -y Microsoft-Windows-Subsystem-Linux --source windowsfeatures
 #dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 #dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
