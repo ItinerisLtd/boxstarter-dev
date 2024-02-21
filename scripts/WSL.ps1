@@ -14,7 +14,7 @@ Add-AppxPackage -Path ~/Ubuntu.appx
 RefreshEnv
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/.wslconfig' -OutFile ~/.wslconfig -UseBasicParsing
 
-wsl --update
+wsl --install
 wsl --set-default-version 2
 # Install Ubuntu as passwordless root user
 ubuntu install --root
