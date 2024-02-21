@@ -1,3 +1,10 @@
+# Setting File Permissions On Hosts File
+Write-Output "Setting File Permissions On Hosts File"
+$ACL = Get-ACL -Path "C:\Windows\System32\drivers\etc\hosts"
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Users","Modify","Allow")
+$ACL.SetAccessRule($AccessRule)
+$ACL | Set-Acl -Path "C:\Windows\System32\drivers\etc\hosts"
+
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
 #choco install -y Microsoft-Hyper-V-All --source=windowsFeatures
