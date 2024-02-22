@@ -5,22 +5,9 @@ $AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Use
 $ACL.SetAccessRule($AccessRule)
 $ACL | Set-Acl -Path "C:\Windows\System32\drivers\etc\hosts"
 
-#Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-#Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All
-choco install -y Microsoft-Hyper-V-All --source windowsFeatures
-choco install -y VirtualMachinePlatform --source windowsFeatures
-choco install -y Microsoft-Windows-Subsystem-Linux --source windowsfeatures
-#dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-#dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-
-#echo 'Downloading Ubuntu'
 $Username = 'itineris'
 $Password = 'itineris'
-# TODO: Move this to choco install once --root is included in that package
-#Invoke-WebRequest -Uri 'https://aka.ms/wslubuntu' -OutFile ~/Ubuntu.appx -UseBasicParsing
-#Add-AppxPackage -Path ~/Ubuntu.appx
 
-RefreshEnv
 echo 'Installing .wslconfig'
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/.wslconfig' -OutFile ~/.wslconfig -UseBasicParsing
 
@@ -45,3 +32,9 @@ wsl --set-default Ubuntu
 
 echo 'Installing wsl.conf'
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/wsl.conf' -OutFile '\\wsl$\Ubuntu\etc\wsl.conf' -UseBasicParsing
+
+echo 'Installing wsl.sh'
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/scripts/wsl.sh' -OutFile "\\wsl$\Ubuntu\home\${Username}\wsl-setup.sh" -UseBasicParsing
+
+echo 'Running wsl.sh'
+ubuntu run bash -c "chmod +x /home/${Username}/wsl-setup.sh && /home/${Username}/wsl-setup.sh"
