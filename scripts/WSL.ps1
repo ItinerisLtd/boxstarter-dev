@@ -20,6 +20,9 @@ wsl --set-default-version 2
 refreshenv
 echo 'Installing Ubuntu as passwordless root user'
 ubuntu install --root
+echo 'Installing wsl.conf'
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/wsl.conf' -OutFile ~/Downloads/wsl.conf -UseBasicParsing
+ubuntu run cp "/mnt/c/Users/${env:USERNAME}/Downloads/wsl.conf" '/etc/wsl.conf'
 echo "Adding '${Username}' user"
 ubuntu run useradd -m "${Username}"
 ubuntu run "echo ${Username}:${Password} | chpasswd"
@@ -32,10 +35,6 @@ echo "Setting Ubuntu default user to ${Username}"
 ubuntu config --default-user "${Username}"
 echo 'Setting default WSL distribution to Ubuntu'
 wsl --set-default Ubuntu
-
-echo 'Installing wsl.conf'
-Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/wsl.conf' -OutFile ~/Downloads/wsl.conf -UseBasicParsing
-ubuntu run cp "/mnt/c/Users/${env:USERNAME}/Downloads/wsl.conf" '/etc/wsl.conf'
 
 echo 'Installing wsl.sh'
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/scripts/wsl.sh' -OutFile ~/Downloads/wsl-setup.sh -UseBasicParsing
