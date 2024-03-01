@@ -12,29 +12,33 @@ echo 'Installing .wslconfig'
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/.wslconfig' -OutFile ~/.wslconfig -UseBasicParsing
 
 echo 'Running wsl --install'
-wsl --install
+wsl --install --no-launch
 echo 'Setting WSL version to 2'
 wsl --set-default-version 2
+refreshenv
 echo 'Installing Ubuntu as passwordless root user'
 ubuntu install --root
 echo "Adding '${Username}' user"
-ubuntu run useradd -m "$Username"
-ubuntu run sh -c "echo ${Username}:${Password} | chpasswd"
-ubuntu run chsh -s /usr/bin/bash "$Username"
-ubuntu run usermod -aG adm,cdrom,sudo,dip,plugdev
+ubuntu run useradd -m "${Username}"
+ubuntu run "echo ${Username}:${Password} | chpasswd"
+ubuntu run chsh -s /usr/bin/bash "${Username}"
+ubuntu run usermod -aG adm,cdrom,sudo,dip,plugdev "${Username}"
 echo 'Updating Ubuntu'
 ubuntu run apt update
 ubuntu run apt upgrade -y
 echo "Setting Ubuntu default user to ${Username}"
-ubuntu config --default-user "$Username"
+ubuntu config --default-user "${Username}"
 echo 'Setting default WSL distribution to Ubuntu'
 wsl --set-default Ubuntu
 
 echo 'Installing wsl.conf'
-Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/wsl.conf' -OutFile '\\wsl$\Ubuntu\etc\wsl.conf' -UseBasicParsing
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/wsl.conf' -OutFile ~/Downloads/wsl.conf -UseBasicParsing
+ubuntu run cp "/mnt/c/Users/${env:USERNAME}/Downloads/wsl.conf" '/etc/wsl.conf'
 
 echo 'Installing wsl.sh'
-Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/scripts/wsl.sh' -OutFile "\\wsl$\Ubuntu\home\${Username}\wsl-setup.sh" -UseBasicParsing
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/scripts/wsl.sh' -OutFile ~/Downloads/wsl-setup.sh -UseBasicParsing
+ubuntu run cp "/mnt/c/Users/${env:USERNAME}/Downloads/wsl-setup.sh" '~/wsl-setup.sh'
 
 echo 'Running wsl.sh'
-ubuntu run bash -c "chmod +x /home/${Username}/wsl-setup.sh && /home/${Username}/wsl-setup.sh"
+ubuntu run chmod +x '~/wsl-setup.sh'
+ubuntu run '~/wsl-setup.sh'
