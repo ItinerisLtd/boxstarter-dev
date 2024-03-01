@@ -11,8 +11,8 @@ $Password = 'itineris'
 echo 'Installing .wslconfig'
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ItinerisLtd/boxstarter-dev/main/configs/.wslconfig' -OutFile ~/.wslconfig -UseBasicParsing
 
-echo 'Running wsl --install'
-wsl --install --no-launch
+echo 'Running wsl --install --distribution Ubuntu --no-launch'
+wsl --install --distribution Ubuntu --no-launch
 echo 'Setting WSL version to 2'
 wsl --set-default-version 2
 refreshenv
