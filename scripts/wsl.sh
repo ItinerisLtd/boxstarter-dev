@@ -51,7 +51,7 @@ sudo apt install ca-certificates apt-transport-https software-properties-common 
 
 # Install system tools
 info 'Installing system tools'
-sudo apt install curl git zsh gh --yes
+sudo apt install curl git zsh gh wslu --yes
 
 info 'Installing LEMP stack'
 # Install MariaDB
