@@ -61,6 +61,10 @@ sudo systemctl start mariadb
 sudo systemctl enable mariadb
 sudo mysql_secure_installation
 sudo systemctl restart mariadb
+MYSQL_USER='wp'
+MYSQL_PASS='wp'
+# Create new MySQL user for our WordPress projects.
+sudo mysql --execute="CREATE USER '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_PASS}';GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'localhost' WITH GRANT OPTION;FLUSH PRIVILEGES;"
 # Install Nginx
 sudo apt install nginx --yes
 # Install PHP
