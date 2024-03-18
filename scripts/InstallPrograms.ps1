@@ -40,3 +40,4 @@ Start-BitsTransfer -Source "https://downloads.1password.com/win/1PasswordSetup-l
 Invoke-Expression -Command "~/Downloads/1PasswordSetup-latest.exe"
 winget install -e --id Microsoft.Teams
 winget install --id Microsoft.Powershell --source winget
+winget install -e --id Postman.Postman
